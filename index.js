@@ -15,13 +15,36 @@ client.on('messageCreate', (message) => {
 	if (message.content === 'ping') {
 		message.channel.send(`🏓Latency is ${Date.now() - message.createdTimestamp}ms. API Latency is ${Math.round(client.ws.ping)}ms`);
 	}
-});
-
-client.on('messageCreate', (message) => {
-	if (message.content === 'praise') {
+	else if (message.content.includes('praise')) {
 		message.channel.send('# PRAISE BE UPON THEM');
 	}
+	else if (message.content === '# PRAISE BE UPON THEM') {
+		message.channel.send('# AND MAY THEY BE PRAISED');
+	}
+	else if (message.content === 'name') {
+		message.channel.send(message.guild.name);
+	}
+	else if (message.content === 'give me peach') {
+		message.channel.send('Welcome Praise Be');
+		message.member.roles.add('1139698676307079268');
+	}
+	else if (message.content === 'take my peach') {
+		message.channel.send('Good Bye');
+		message.member.roles.remove('1139698676307079268');
+	}
 });
+
+// client.on('messageCreate', (message) => {
+// 	if (message.content === 'praise') {
+// 		message.channel.send('# PRAISE BE UPON THEM');
+// 	}
+// });
+
+// client.on('messageCreate', (message) => {
+// 	if (message.content === '# PRAISE BE UPON THEM') {
+// 		message.channel.send('# AND MAY THEY BE PRAISED');
+// 	}
+// });
 
 // Log in to Discord with your client's token
 client.login(token);
